@@ -13,20 +13,13 @@
     <link rel="stylesheet" href="/res/css/vmri.css" />
 </head>
 
-<body class="text-monospace">
+<body class="text-monospace" onload="fillDatasets()">
     <div class="main">
         <div class="top-row px-4">
             <button class="btn-primary" onclick="loadFuzzyDataSet()"
                 value="Load Dataset" id="loadDataset">Load Dataset: </button>
-            <select id="datasetPath">
-                <option value="/VMRI/3T/05">05 - 3T</option>
-                <option value="/VMRI/1T/05">05 - 1T</option>
-                <option value="/VMRI/3T/54">54 - 3T</option>
-                <option value="/VMRI/1T/54">54 - 1T</option>
-                <option value="/VMRI/3T/bw">bw - 3T</option>
-                <option value="/VMRI/1T/bw">bw - 1T</option>
-                <option value="/VMRI/1.5T/phantomag">Phantomag - 1.5T</option>
-            </select>
+            <select id="datasetPath" onchange="changedDataset()"></select>
+            <a id="datasetURL" class="nav-item cp1s1"></a>
             <div class="ml-2 spinner-border hidden" role="status" id="datasetLoading">
                 <span class="sr-only">Loading...</span>
             </div>

@@ -327,13 +327,41 @@ function displayAndWindow3DImage() {
     k_ctx.putImageData(kdata, 0, 0);
 }
 
+const datasets = {
+    0: ["BrainWeb 05 - 3T", "/VMRI/3T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    1: ["BrainWeb 05 - 1T", "/VMRI/1T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    2: ["BrainWeb 54 - 3T", "/VMRI/3T/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    3: ["BrainWeb 54 - 1T", "/VMRI/1T/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    4: ["BrainWeb colin27 - 3T", "/VMRI/3T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
+    5: ["BrainWeb colin27 - 1T", "/VMRI/1T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
+    6: ["Phantomag - 1.5T", "/VMRI/1.5T/phantomag", "http://lab.ibb.cnr.it/Phantomag_Desc.htm"],
+}
+
+function fillDatasets() {
+    sel = document.getElementById("datasetPath");
+    for(var p in datasets) {
+        op = document.createElement("option");
+        op.value = p;
+        op.innerText = datasets[p][0];
+        sel.appendChild(op);
+    }
+    changedDataset();
+}
+
+function changedDataset() {
+    url = datasets[document.getElementById("datasetPath").value][2];
+    a = document.getElementById("datasetURL")
+    a.setAttribute("href", url);
+    a.innerText = "Dataset source";
+}
+
 function loadFuzzyDataSet() {
     content = document.getElementById("content");
     content.classList.add("hidden");
     r = document.getElementById("result");
     r.classList.add("hidden");
 
-    path = document.getElementById("datasetPath").value;
+    path = datasets[document.getElementById("datasetPath").value][1];
     return new Promise(async (resolve, reject) => {
 
         spin = document.getElementById("datasetLoading");
