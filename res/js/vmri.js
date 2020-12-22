@@ -335,6 +335,7 @@ const datasets = {
     4: ["BrainWeb colin27 - 3T", "/VMRI/3T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
     5: ["BrainWeb colin27 - 1T", "/VMRI/1T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
     6: ["Phantomag - 1.5T", "/VMRI/1.5T/phantomag", "http://lab.ibb.cnr.it/Phantomag_Desc.htm"],
+    7: ["Phantomag - 1T", "/VMRI/1T/phantomag", "http://lab.ibb.cnr.it/Phantomag_Desc.htm"],
 }
 
 function fillDatasets() {
