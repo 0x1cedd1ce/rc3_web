@@ -49,15 +49,23 @@ function QueryableWorker(url) {
 }
 const w = new QueryableWorker("/res/js/intensityCalculations.js");
 
-const xdim = 256;
-const ydim = 256;
-const zdim = 256;
+var xdim = 256;
+var ydim = 256;
+var zdim = 256;
 var array_pd, array_t1, array_t2, result, k_data_im_re, slice_data;
 
 const loadDataMessageHandler = function (data) {
     array_pd = data[0];
     array_t1 = data[1];
     array_t2 = data[2];
+    zdim = data[3];
+    ydim = data[4];
+    xdim = data[5];
+
+    slice = document.getElementById("slice");
+    slice.max = zdim;
+    slice.value = Math.round(zdim/2);
+
     r = document.getElementById("content");
     r.classList.remove("hidden");
     spin = document.getElementById("datasetLoading");
@@ -328,10 +336,6 @@ function loadFuzzyDataSet() {
     path = document.getElementById("datasetPath").value;
     return new Promise(async (resolve, reject) => {
 
-        slice = document.getElementById("slice");
-        slice.max = zdim;
-        slice.value = 100;
-
         spin = document.getElementById("datasetLoading");
         spin.classList.remove("hidden");
 
@@ -552,7 +556,7 @@ function updateIRTime() {
     if(ti+te >= tr) {
         time.innerText = "TE+TI has to be smaller than TR";
     } else {
-        time.innerText = formatTime(tr*256*256);
+        time.innerText = formatTime(tr*ydim*zdim);
     }
 }
 
@@ -564,7 +568,7 @@ function updateSETime() {
     if(te >= tr) {
         time.innerText = "TE has to be smaller than TR";
     } else {
-        time.innerText = formatTime(tr*256*256);
+        time.innerText = formatTime(tr*ydim*zdim);
     }
 }
 
@@ -580,7 +584,7 @@ function updatePSIFTime() {
     if(te >= tr) {
         time.innerText = "TE has to be smaller than TR";
     } else {
-        time.innerText = formatTime(tr*256*256);
+        time.innerText = formatTime(tr*ydim*zdim);
     }
 }
 
@@ -596,7 +600,7 @@ function updateFlashTime() {
     if(te >= tr) {
         time.innerText = "TE has to be smaller than TR";
     } else {
-        time.innerText = formatTime(tr*256*256);
+        time.innerText = formatTime(tr*ydim*zdim);
     }
 }
 
@@ -612,7 +616,7 @@ function updateFISPTime() {
     if(te >= tr) {
         time.innerText = "TE has to be smaller than TR";
     } else {
-        time.innerText = formatTime(te*2*256*256);
+        time.innerText = formatTime(te*2*ydim*zdim);
     }
 }
 
@@ -626,7 +630,7 @@ function updateBalancedSSFPTime() {
 
     document.getElementById("bssfp_tr").value = te*2;
 
-    time.innerText = formatTime(te*2*256*256);
+    time.innerText = formatTime(te*2*ydim*zdim);
 }
 
 function formatTime(time) {

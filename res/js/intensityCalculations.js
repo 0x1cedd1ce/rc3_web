@@ -1,9 +1,9 @@
 ﻿self.importScripts("/res/js/kissfft.js")
 self.importScripts("/res/js/pako.min.js")
 
-const xdim = 256;
-const ydim = 256;
-const zdim = 256;
+var xdim = 256;
+var ydim = 256;
+var zdim = 256;
 
 var array_pd = new Float32Array(256 * 256);
 var array_t1 = new Uint16Array(256 * 256);
@@ -16,7 +16,11 @@ async function loadDataSet(path) {
         xhr.onload = function () {
             var resp = pako.inflate(xhr.response).buffer;
             var mm = new Float32Array(resp, 0, 2);
-            var a = new Uint8Array(resp, 8);
+            var shape = new Uint16Array(resp, 8, 3);
+            zdim = shape[0];
+            ydim = shape[1];
+            xdim = shape[2];
+            var a = new Uint8Array(resp, 14);
             var b = new Float32Array(a.length);
             //console.log("pd", mm[0],mm[1], a.reduce((a,b)=>a+b)/a.length)
             for (var x = 0; x < a.length; x++) {
@@ -34,7 +38,11 @@ async function loadDataSet(path) {
         xhr.onload = function () {
             var resp = pako.inflate(xhr.response).buffer;
             var mm = new Float32Array(resp, 0, 2);
-            var a = new Uint8Array(resp, 8);
+            var shape = new Uint16Array(resp, 8, 3);
+            zdim = shape[0];
+            ydim = shape[1];
+            xdim = shape[2];
+            var a = new Uint8Array(resp, 14);
             var b = new Float32Array(a.length);
             //console.log("t1", mm[0],mm[1], a.reduce((a,b)=>a+b)/a.length)
             for (var x = 0; x < a.length; x++) {
@@ -52,7 +60,11 @@ async function loadDataSet(path) {
         xhr.onload = function () {
             var resp = pako.inflate(xhr.response).buffer;
             var mm = new Float32Array(resp, 0, 2);
-            var a = new Uint8Array(resp, 8);
+            var shape = new Uint16Array(resp, 8, 3);
+            zdim = shape[0];
+            ydim = shape[1];
+            xdim = shape[2];
+            var a = new Uint8Array(resp, 14);
             var b = new Float32Array(a.length);
             //console.log("t2", mm[0],mm[1], a.reduce((a,b)=>a+b)/a.length)
             for (var x = 0; x < a.length; x++) {
@@ -65,7 +77,7 @@ async function loadDataSet(path) {
         xhr.responseType = "arraybuffer";
         xhr.send()
     });
-    return [array_pd, array_t1, array_t2];
+    return [array_pd, array_t1, array_t2, zdim, ydim, xdim];
 }
 
 function calcKSpace(result) {
@@ -90,7 +102,7 @@ function transformKSpace(fft_res) {
     var k_result = new Float32Array(xdim * ydim);
     var maxval = 0;
     var minval = 999999999;
-    for (var i = 0; i < xdim * ydim; i++) {
+    for (var i = 0; i < k_data.length; i++) {
         if (fft_res[2 * i] == -1) {
             k_data[i] = -1;
         } else {
