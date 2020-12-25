@@ -328,8 +328,8 @@ function displayAndWindow3DImage() {
 }
 
 const datasets = {
-    0: ["BrainWeb 05 - 3T", "/VMRI/3T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
-    1: ["BrainWeb 05 - 1T", "/VMRI/1T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    //0: ["BrainWeb 05 - 3T", "/VMRI/3T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    //1: ["BrainWeb 05 - 1T", "/VMRI/1T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
     2: ["BrainWeb 54 - 3T", "/VMRI/3T/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
     3: ["BrainWeb 54 - 1T", "/VMRI/1T/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
     4: ["BrainWeb colin27 - 3T", "/VMRI/3T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="/res/img/favicon.ico">
     <title>Virtual MRI</title>
+    <script src="/res/js/jquery-1.10.2.min.js"></script>
+    <script src="/res/js/bootstrap.min.js"></script>
     <script src="/res/js/vmri.js"></script>
     <link href="/res/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/res/css/font-awesome.min.css" rel="stylesheet" />
@@ -58,6 +60,8 @@
                 <div class="col" id="sequence">
                     <div class="row">
                         <div class="col nav nav-tabs">
+                            <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_sequence">?</button>
+                            
                             <div class="nav-link active" id="params-ir-tab" onclick="setInversionRecovery()">Inversion
                                 Recovery</div>
                             <div class="nav-link" id="params-se-tab" onclick="setSpinEcho()">Spin Echo</div>
@@ -72,18 +76,21 @@
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TI:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_ti">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="420" name="ti" id="ir_ti" oninput="updateIRTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TE:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_te">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="23" name="tr" id="ir_te" oninput="updateIRTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TR:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_tr">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="666" name="tr" id="ir_tr" oninput="updateIRTime()"/>
                             </div>
@@ -98,12 +105,14 @@
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TE:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_te">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="420" name="ti" id="se_te" oninput="updateSETime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TR:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_tr">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="666" name="tr" id="se_tr" oninput="updateSETime()"/>
                             </div>
@@ -118,18 +127,21 @@
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TE:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_te">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="42" name="ti" id="bssfp_te" oninput="updateBalancedSSFPTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TR:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_tr">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="84" name="tr" id="bssfp_tr" disabled/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">FA:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_fa">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="23" min="-180" max="180" name="fa" id="bssfp_fa" oninput="updateBalancedSSFPTime()"/>
                             </div>
@@ -144,18 +156,21 @@
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TE:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_te">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="42" name="ti" id="fisp_te" oninput="updateFISPTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TR:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_tr">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="84" name="tr" id="fisp_tr" oninput="updateFISPTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">FA:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_fa">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="23" min="-180" max="180" name="fa" id="fisp_fa" oninput="updateFISPTime()"/>
                             </div>
@@ -170,18 +185,21 @@
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TE:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_te">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="42" name="ti" id="psif_te" oninput="updatePSIFTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TR:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_tr">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="84" name="tr" id="psif_tr" oninput="updatePSIFTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">FA:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_fa">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="23" min="-180" max="180" name="fa" id="psif_fa" oninput="updatePSIFTime()"/>
                             </div>
@@ -196,18 +214,21 @@
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TE:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_te">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="42" name="ti" id="flash_te" oninput="updateFlashTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">TR:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_tr">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="666" name="tr" id="flash_tr" oninput="updateFlashTime()"/>
                             </div>
                             <div class="form-row">
                                 <div class="col-auto w-25">
                                     <label class="mb-0 align-self-center">FA:</label>
+                                    <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_fa">?</button>
                                 </div>
                                 <input class="col-sm form-control" type="number" value="23" min="-180" max="180" name="fa" id="flash_fa" oninput="updateFlashTime()"/>
                             </div>
@@ -237,7 +258,9 @@
             <div class="row pt-3 hidden align-items-end" id="result">
                 <div class="col-3">
                     <figure>
-                        <div class="figcaption">K-Space</div>
+                        <div class="figcaption">K-Space
+                            <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_kspace">?</button>
+                        </div>
                         <canvas class="border img-fluid w-100" onwheel="scrollResult(event)" id="kResult"></canvas>
                     </figure>
                     <fieldset id="kspace">
@@ -281,11 +304,13 @@
                     <div class="row">
                         <div class="col">
                             <label for="ti">Window Center: </label>
+                            <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_window">?</button>
                             <input type="range" class="pl-0 pr-0 form-control form-control-range" name="wc" id="wc"
                                 min="0" max="4096" value="2048" onchange="displayAndWindow3DImage();" />
                         </div>
                         <div class="col">
                             <label for="tr">Window Width:</label>
+                            <button type="button" class="btn btn-primary btn-help" data-toggle="modal" data-target="#modal_window">?</button>
                             <input type="range" class="pl-0 pr-0 form-control form-control-range" name="ww" id="ww"
                                 min="0" max="4096" value="4096" onchange="displayAndWindow3DImage();" />
                         </div>
@@ -304,6 +329,173 @@
 
         </div>
     </div>
+
+    <div class="modal fade" id="modal_tr" tabindex="-1" role="dialog" aria-labelledby="modal_tr" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Repetition Time</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                The Repetition Time (TR / [ms]) is the time from the beginning of one measurement to the beginning of the next measurement.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal_te" tabindex="-1" role="dialog" aria-labelledby="modal_te" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Echo Time</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              The Echo Time (TE / [ms]) is the time until the echo signal has the peak amplitude. At the beginning a pulse is send to flip the spins sideways by an angle. 
+              This angle is 90° for Spin Echo and Inversion Recovery, and defined by the parameter FA for the other sequences. 
+              At TE/2 a 180° pulse is send so the dephased spins rotate backwards and will be all in phase again at TE. The signal will be measured at TE.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="modal_ti" tabindex="-1" role="dialog" aria-labelledby="modal_ti" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Inversion Time</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              The Inversion Time (TI / [ms]) is the time from the beginning of the measurement, where the spins are inverted (rotated by 180°), until the radio pulse is send to turn the spins by 90°. 
+              Then the TE starts counting until the actual signal can be measured.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="modal_fa" tabindex="-1" role="dialog" aria-labelledby="modal_fa" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Flip Angle</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              The Flip Angle (FA / deg) defines how far the spins are rotated for the measurement. For Spin Echo and Inversion Recovery the flip angle is fixed at 90°.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="modal fade" id="modal_sequence" tabindex="-1" role="dialog" aria-labelledby="modal_sequence" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sequence</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              A Sequence describes which steps a MRI scanner has to perform to aquire the image. Usually the 5 available actors are 3 gradient magnetic fields (x,y,z), 
+              an radio frequency emitter and the analog-to-digital converter to measure the signal at the reciever coils. 
+              Example: For a Spin Echo Sequence it would look like this: <br />
+                <img class="img-fluid img" src="/res/img/spin_echo_sequence.png" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="modal fade" id="modal_kspace" tabindex="-1" role="dialog" aria-labelledby="modal_kspace" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">K-Space</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              The k-space is a frequency domain, every measured MRI signal is one complex point inside the space. To generate the image an inverse fourier transformation is computed. 
+              The center of the k-space consists to the low frequencies. In polar coordinates the angle describes the direction of the sine wave and the distance the frequency. 
+              As usual with fourier spaces, the real part is the amplitude and the imaginary part the phase. 
+              When displaying the k-space the euclidian norm of the complex number is used.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="modal fade" id="modal_window" tabindex="-1" role="dialog" aria-labelledby="modal_window" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Window Center</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              The Window Center (WC) and Window Width (WW) controll which values are displayed in the image. The values inside the window (WC±(WW/2)) are 
+              spread linearly across the 256 possible gray value the canvas can display. Everything lower than the window is set to 0 and everything above set to 255. 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="modal fade" id="modal_" tabindex="-1" role="dialog" aria-labelledby="modal_" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">W</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 </body>
 
