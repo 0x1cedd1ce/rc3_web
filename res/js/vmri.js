@@ -330,12 +330,12 @@ function displayAndWindow3DImage() {
 const datasets = {
     //0: ["BrainWeb 05 - 3T", "/VMRI/3T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
     //1: ["BrainWeb 05 - 1T", "/VMRI/1T/05", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
-    2: ["BrainWeb 54 - 3T", "/VMRI/3T/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
-    3: ["BrainWeb 54 - 1T", "/VMRI/1T/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
-    4: ["BrainWeb colin27 - 3T", "/VMRI/3T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
-    5: ["BrainWeb colin27 - 1T", "/VMRI/1T/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
+    2: ["BrainWeb 54 - 3T", "/VMRI/3t/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    3: ["BrainWeb 54 - 1T", "/VMRI/1t/54", "https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html"],
+    4: ["BrainWeb colin27 - 3T", "/VMRI/3t/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
+    5: ["BrainWeb colin27 - 1T", "/VMRI/1t/bw", "https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres"],
     6: ["Phantomag - 1.5T", "/VMRI/1.5T/phantomag", "http://lab.ibb.cnr.it/Phantomag_Desc.htm"],
-    7: ["Phantomag - 1T", "/VMRI/1T/phantomag", "http://lab.ibb.cnr.it/Phantomag_Desc.htm"],
+    7: ["Phantomag - 1T", "/VMRI/1t/phantomag", "http://lab.ibb.cnr.it/Phantomag_Desc.htm"],
 }
 
 function fillDatasets() {
