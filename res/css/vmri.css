@@ -242,3 +242,10 @@ app {
     /* Never collapse the sidebar for wide screens */
     display: block;
 }
+
+@media(max-width: 1100px) {
+    .top-row {
+        flex-wrap: wrap;
+        height: unset;
+    }
+}
